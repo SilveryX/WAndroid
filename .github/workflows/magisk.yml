@@ -708,7 +708,7 @@ jobs:
         id: organize
         run: |
           mkdir -p WSA
-          cp ./${{ matrix.arch }}/* WSA
+          cp -r ./${{ matrix.arch }}/* WSA
           zip -q -r WSA.zip WSA
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
       - name: Upload WSA
