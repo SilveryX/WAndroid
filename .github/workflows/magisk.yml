@@ -704,6 +704,13 @@ jobs:
             name2="-GApps-${variant}"
           fi
           echo "artifact_name=WSA${name1}${name2}_${{ env.WSA_VER }}_${{ matrix.arch }}_${{ env.WSA_REL }}" >> $GITHUB_ENV
+      - name: Organize files
+        id: organize
+        run: |
+          mkdir -p WSA
+          cp ./${{ matrix.arch }}/* WSA
+          zip -q -r WSA.zip WSA
+          echo "FIRMWARE=$PWD" >> $GITHUB_ENV
       - name: Upload WSA
         uses: actions/upload-artifact@v3
         with:
@@ -713,7 +720,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           name: ${{ env.artifact_name }}
-          artifacts: "./${{ matrix.arch }}/*"
+          artifacts: ${{ env.FIRMWARE }}/WSA.zip
           allowUpdates: true
           tag: ${{ env.WSA_VER }}
           token: ${{ secrets.GITHUB_TOKEN }}
