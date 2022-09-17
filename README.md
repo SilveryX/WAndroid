@@ -14,9 +14,6 @@
 - Merged all language packs
 - Support managing start menu icons (manually installing [WSAHelper](https://github.com/LSPosed/WSAHelper/releases/latest) to use this feature)
 
-## Video Guide
-
-https://user-images.githubusercontent.com/5022927/145696886-e13ebfc1-ff25-4410-893e-d3e517af70ea.mp4
 
 ## Text Guide
 
